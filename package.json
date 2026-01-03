@@ -1,62 +1,49 @@
 {
-  "name": "react-dom",
-  "version": "18.3.1",
-  "description": "React package for working with the DOM.",
-  "main": "index.js",
+  "name": "react-router-dom",
+  "version": "6.30.2",
+  "description": "Declarative routing for React web applications",
+  "keywords": [
+    "react",
+    "router",
+    "route",
+    "routing",
+    "history",
+    "link"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/react.git",
-    "directory": "packages/react-dom"
+    "url": "https://github.com/remix-run/react-router",
+    "directory": "packages/react-router-dom"
   },
-  "keywords": [
-    "react"
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/facebook/react/issues"
-  },
-  "homepage": "https://reactjs.org/",
+  "author": "Remix Software <hello@remix.run>",
+  "sideEffects": false,
+  "main": "./dist/main.js",
+  "unpkg": "./dist/umd/react-router-dom.production.min.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "dependencies": {
-    "loose-envify": "^1.1.0",
-    "scheduler": "^0.23.2"
+    "@remix-run/router": "1.23.1",
+    "react-router": "6.30.2"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "peerDependencies": {
-    "react": "^18.3.1"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
   "files": [
-    "LICENSE",
+    "dist/",
+    "CHANGELOG.md",
+    "LICENSE.md",
     "README.md",
-    "index.js",
-    "client.js",
-    "profiling.js",
+    "server.d.ts",
     "server.js",
-    "server.browser.js",
-    "server.node.js",
-    "test-utils.js",
-    "cjs/",
-    "umd/"
+    "server.mjs"
   ],
-  "exports": {
-    ".": "./index.js",
-    "./client": "./client.js",
-    "./server": {
-      "deno": "./server.browser.js",
-      "worker": "./server.browser.js",
-      "browser": "./server.browser.js",
-      "default": "./server.node.js"
-    },
-    "./server.browser": "./server.browser.js",
-    "./server.node": "./server.node.js",
-    "./profiling": "./profiling.js",
-    "./test-utils": "./test-utils.js",
-    "./package.json": "./package.json"
-  },
-  "browser": {
-    "./server.js": "./server.browser.js"
-  },
-  "browserify": {
-    "transform": [
-      "loose-envify"
-    ]
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
