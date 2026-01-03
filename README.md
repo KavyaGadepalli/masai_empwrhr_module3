@@ -1,30 +1,60 @@
-# Update Browserslist DB
+# `react-dom`
 
-<img width="120" height="120" alt="Browserslist logo by Anton Popov"
-     src="https://browsersl.ist/logo.svg" align="right">
+This package serves as the entry point to the DOM and server renderers for React. It is intended to be paired with the generic React package, which is shipped as `react` to npm.
 
-CLI tool to update `caniuse-lite` with browsers DB
-from [Browserslist](https://github.com/browserslist/browserslist/) config.
-
-Some queries like `last 2 versions` or `>1%` depend on actual data
-from `caniuse-lite`.
+## Installation
 
 ```sh
-npx update-browserslist-db@latest
-```
-Or if using `pnpm`:
-```sh
-pnpm exec update-browserslist-db latest
-```
-Or if using `yarn`:
-```sh
-yarn dlx update-browserslist-db@latest
+npm install react react-dom
 ```
 
-<a href="https://evilmartians.com/?utm_source=update-browserslist-db">
-  <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
-       alt="Sponsored by Evil Martians" width="236" height="54">
-</a>
+## Usage
 
-## Docs
-Read full docs **[here](https://github.com/browserslist/update-db#readme)**.
+### In the browser
+
+```js
+import { createRoot } from 'react-dom/client';
+
+function App() {
+  return <div>Hello World</div>;
+}
+
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+### On the server
+
+```js
+import { renderToPipeableStream } from 'react-dom/server';
+
+function App() {
+  return <div>Hello World</div>;
+}
+
+function handleRequest(res) {
+  // ... in your server handler ...
+  const stream = renderToPipeableStream(<App />, {
+    onShellReady() {
+      res.statusCode = 200;
+      res.setHeader('Content-type', 'text/html');
+      stream.pipe(res);
+    },
+    // ...
+  });
+}
+```
+
+## API
+
+### `react-dom`
+
+See https://reactjs.org/docs/react-dom.html
+
+### `react-dom/client`
+
+See https://reactjs.org/docs/react-dom-client.html
+
+### `react-dom/server`
+
+See https://reactjs.org/docs/react-dom-server.html
